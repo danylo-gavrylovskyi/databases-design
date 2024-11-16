@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: mart_total_sales
+    description: "Total sales aggregated from cleaned sales data"
+    columns:
+      - name: total_sales
+        description: "Total count of unique sales"
+      - name: total_amount
+        description: "Total amount from all sales"
+
+  - name: mart_customer_purchase_summary
+    description: "Summary of purchases by customer"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+      - name: total_sales_count
+        description: "Total count of sales made by the customer"
+      - name: total_spent
+        description: "Total amount spent by the customer"
+        data_tests:
+          - not_null
+
+  - name: mart_product_performance
+    description: "Performance summary by product"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product"
+      - name: total_revenue
+        description: "Total revenue generated from the product"
+      - name: total_sales_count
+        description: "Total count of sales for the product"
+
+  - name: mart_order_summary
+    description: "Summary of each customer's orders"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+      - name: total_orders
+        description: "Total number of orders made by the customer"
+      - name: total_order_amount
+        description: "Total order amount for the customer"
+        data_tests:
+          - not_null
+
+  - name: mart_monthly_sales_trends
+    description: "Monthly trends of sales data"
+    columns:
+      - name: month
+        description: "Month of the sales data"
+      - name: monthly_total_sales
+        description: "Total sales for the month"
+      - name: monthly_total_orders
+        description: "Total number of orders for the month"

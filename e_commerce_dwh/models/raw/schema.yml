@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: raw_sales_data
+    description: "Raw sales data from the source system"
+    columns:
+      - name: sales_id
+        description: "Unique identifier for each sale"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Identifier for the customer who made the purchase"
+      - name: product_id
+        description: "Identifier for the product sold"
+      - name: sale_date
+        description: "Date of the sale transaction"
+      - name: sale_amount
+        description: "Amount of the sale transaction"
+
+  - name: raw_customer_data
+    description: "Raw customer information from the source system"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - not_null
+          - unique
+      - name: customer_name
+        description: "Full name of the customer"
+      - name: email
+        description: "Email address of the customer"
+
+  - name: raw_product_data
+    description: "Raw product information"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product"
+        tests:
+          - not_null
+          - unique
+      - name: product_name
+        description: "Name of the product"
+      - name: category
+        description: "Category of the product"
+      - name: price
+        description: "Price of the product"
+
+  - name: raw_order_data
+    description: "Raw order information"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Identifier for the customer who placed the order"
+      - name: order_date
+        description: "Date of the order"
+
+  - name: raw_transaction_data
+    description: "Raw transaction data"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for each transaction"
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: "Identifier of the order associated with the transaction"
+      - name: transaction_amount
+        description: "Transaction amount"
+        tests:
+          - not_null
+      - name: transaction_date
+        description: "Date of the transaction"

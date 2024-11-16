@@ -1,0 +1,25 @@
+name: 'e_commerce_dwh'
+version: '1.0.0'
+
+profile: 'e_commerce_dwh'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  e_commerce_dwh:
+    raw:
+      materialized: view
+    stage:
+      materialized: view
+    mart:
+      materialized: table
+

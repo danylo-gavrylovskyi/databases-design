@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: stage_sales_data_cleaned
+    description: "Cleaned and filtered sales data"
+    columns:
+      - name: sales_id
+        description: "Unique identifier for each sale"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Identifier for the customer who made the purchase"
+      - name: product_id
+        description: "Identifier for the product sold"
+      - name: sale_date
+        description: "Date of the sale transaction"
+      - name: sale_amount
+        description: "Filtered sale amount"
+        tests:
+          - not_null
+
+  - name: stage_customers_normalized
+    description: "Normalized customer information"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - not_null
+          - unique
+      - name: customer_name
+        description: "Standardized customer name"
+      - name: email
+        description: "Email address of the customer"
+        tests:
+          - not_null
+
+  - name: stage_products_standardized
+    description: "Standardized product information"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product"
+        tests:
+          - not_null
+          - unique
+      - name: product_name
+        description: "Product name"
+      - name: category
+        description: "Product category"
+      - name: price
+        description: "Price of the product"
+        tests:
+          - not_null
+
+  - name: stage_order_summary
+    description: "Aggregated order data"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Customer who placed the order"
+      - name: order_date
+        description: "Date of the order"
+      - name: items_sold
+        description: "Number of items sold in the order"
+
+  - name: stage_transaction_data_cleaned
+    description: "Cleaned transaction data"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for each transaction"
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: "Order associated with the transaction"
+      - name: transaction_amount
+        description: "Transaction amount"
+        tests:
+          - not_null
+      - name: transaction_date
+        description: "Date of the transaction"
